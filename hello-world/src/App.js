@@ -20,7 +20,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <Person />
+        <Person name="Rahim" age="34">This is a dummy person bruh.</Person>
+        <Person name="Karim" age="31" />
+        <Person name="Md.Dilshad" age="29" />
+        <Person name="Jala" age="35" />
       </div>
     );
   }

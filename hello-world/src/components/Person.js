@@ -1,10 +1,13 @@
 import React from "react";
-function Person() {
+
+let Person = (props) => {
+    // console.log(props);
     return (
         <div>
-            <h1>I am a person component</h1>
+            {/* <h1>Number: {Math.floor(Math.random() * 10)}</h1> */}
+            <h3>Name: {props.name} and age: {props.age} years</h3>
+            <h4>Extra Info: {props.children}</h4>
         </div>
     )
-    // return React.createElement('div', null, React.createElement('h1', null, "I am person component"));
-}
+};
 export default Person;
