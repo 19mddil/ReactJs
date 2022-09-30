@@ -17,6 +17,8 @@ import Person from './components/Person';
 
 class App extends Component {
   render() {
+    let obj = new Component();
+    console.log(obj);
     return (
       <div className="App">
         <h1>Hello World</h1>
