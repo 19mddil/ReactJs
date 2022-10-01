@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './components/Person';
+import Book from './components/Book';
 
 
 // //JSX
@@ -16,16 +16,43 @@ import Person from './components/Person';
 // }
 
 class App extends Component {
+  state = {
+    books: [
+      { bookName: "1984", writer: "George Orwell" },
+      { bookName: "The Da Vinchi Code", writer: "Dan Brown" },
+      { bookName: "The Alchemist", writer: "Paulo Coelho" }
+    ]
+  }
+
+  changeBookState = bookName => {
+    this.setState({
+      books: [
+        { bookName: bookName, writer: "George Orwell" },
+        { bookName: "The Da Vinchi Code", writer: "Dan Brown" },
+        { bookName: "Metamorphosis", writer: "Frans Kafka" }
+      ]
+    });
+  }
+
   render() {
-    let obj = new Component();
-    console.log(obj);
+    console.log(this.state);
     return (
       <div className="App">
-        <h1>Hello World</h1>
-        <Person name="Rahim" age="34">This is a dummy person bruh.</Person>
-        <Person name="Karim" age="31" />
-        <Person name="Md.Dilshad" age="29" />
-        <Person name="Jala" age="35" />
+        <h1>BookList</h1>
+        <button onClick={() => this.changeBookState("Arrow Function")} >Change State</button>
+        <Book
+          bookName={this.state.books[0].bookName}
+          writer={this.state.books[0].writer}
+        />
+        <Book
+          bookName={this.state.books[1].bookName}
+          writer={this.state.books[1].writer}
+        />
+        <Book
+          bookName={this.state.books[2].bookName}
+          writer={this.state.books[2].writer}
+          change={this.changeBookState.bind(this, "Non-Arrow Function")}
+        />
       </div>
     );
   }
