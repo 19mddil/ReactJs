@@ -18,29 +18,32 @@ import Book from './components/Book';
 class App extends Component {
   state = {
     books: [
-      { bookName: "1984", writer: "George Orwell" },
-      { bookName: "The Da Vinchi Code", writer: "Dan Brown" },
-      { bookName: "The Alchemist", writer: "Paulo Coelho" }
+      { id: 1, bookName: "1984", writer: "George Orwell" },
+      { id: 2, bookName: "The Da Vinchi Code", writer: "Dan Brown" },
+      { id: 3, bookName: "The Alchemist", writer: "Paulo Coelho" },
+      { id: 4, bookName: "Maine Kalmf", writer: "Hitler" },
     ]
   }
 
-  changeBookState = bookName => {
+  changeWithInputState = (event, index) => {
+    const book = {
+      ...this.state.books[index]
+    }
+    book.bookName = event.target.value;
+    const books = [...this.state.books];
+    books[index] = book;
     this.setState({
-      books: [
-        { bookName: bookName, writer: "George Orwell" },
-        { bookName: "The Da Vinchi Code", writer: "Dan Brown" },
-        { bookName: "Metamorphosis", writer: "Frans Kafka" }
-      ]
+      books: books
     });
   }
 
-  changeWithInputState = event => {
+  deleteBook = index => {
+    // const books = this.state.books.slice();
+    // const books = this.state.books.map(item => item);
+    const books = [...this.state.books]
+    books.splice(index, 1);
     this.setState({
-      books: [
-        { bookName: event.target.value, writer: "George Orwell" },
-        { bookName: "The Da Vinchi Code", writer: "Dan Brown" },
-        { bookName: "Metamorphosis", writer: "Frans Kafka" }
-      ]
+      books: books,
     });
   }
 
@@ -55,29 +58,28 @@ class App extends Component {
       marginLeft: "30%",
       marginRight: "30%",
     };
-    const style2 = {
-      padding: "2px",
-    };
+
+
+    const books = this.state.books.map((book, index) => {
+      console.log(book.bookName);
+      return (
+        <Book
+          key={book.id}
+          bookName={book.bookName}
+          writer={book.writer}
+          delete={this.deleteBook.bind(this, index)}
+          changeWithInputState={event => this.changeWithInputState(event, index)}
+        />
+      );
+    })
+
     return (
       <div className="App">
         <h1 style={style}>BookList</h1>
-        <button onClick={() => this.changeBookState("Arrow Function")} >Change State</button>
-        <input style={style2} type="text" onChange={this.changeWithInputState} />
         <br />
-        <Book
-          bookName={this.state.books[0].bookName}
-          writer={this.state.books[0].writer}
-          changeWithInputState={this.changeWithInputState}
-        />
-        <Book
-          bookName={this.state.books[1].bookName}
-          writer={this.state.books[1].writer}
-        />
-        <Book
-          bookName={this.state.books[2].bookName}
-          writer={this.state.books[2].writer}
-          change={this.changeBookState.bind(this, "Non-Arrow Function")}
-        />
+
+        {books}
+
       </div>
     );
   }
