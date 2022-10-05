@@ -45,12 +45,25 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
+    const style = {
+      border: "1px solid red",
+      borderRadius: "5px",
+      backgroundColor: "Black",
+      color: "grey",
+      //margin: "10px auto",
+      padding: "10px",
+      marginLeft: "30%",
+      marginRight: "30%",
+    };
+    const style2 = {
+      padding: "2px",
+    };
     return (
       <div className="App">
-        <h1>BookList</h1>
+        <h1 style={style}>BookList</h1>
         <button onClick={() => this.changeBookState("Arrow Function")} >Change State</button>
-        <input type="text" onChange={this.changeWithInputState} />
+        <input style={style2} type="text" onChange={this.changeWithInputState} />
+        <br />
         <Book
           bookName={this.state.books[0].bookName}
           writer={this.state.books[0].writer}
