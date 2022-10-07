@@ -1,5 +1,5 @@
 import React from 'react';
-import '../stylesheets/book.css';
+import '../../stylesheets/book.css';
 const Book = props => {
     return (
         <div className='Book'>
