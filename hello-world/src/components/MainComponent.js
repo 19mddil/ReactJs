@@ -45,14 +45,24 @@ class MainComponent extends Component {
             }
         )
     }
-
-    UNSAFE_componentWillMount() {
-        console.log("MainComponent WillMount");
-    }
     componentDidMount() {
         console.log("MainComponent componentDidMount");
     }
+    UNSAFE_componentWillMount() {
+        console.log("MainComponent WillMount");
+    }
 
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("U MainComponent shouldComponentUpdate", nextProps, nextState);
+        return true;
+    }
+    UNSAFE_componentWillUpdate(nextProps, nextState) {
+        console.log("U MainComponent componentWillUpdate");
+    }
+    componentDidUpdate() {
+        console.log("U MainComponent componentDidupdate");
+    }
     render() {
         console.log("MainComponet render");
         const style = {
@@ -69,7 +79,12 @@ class MainComponent extends Component {
 
         let books = null;
         if (this.state.showBooks) {
-            books = <BookList books={this.state.books} deleteBook={this.deleteBook} changeWithInputState={this.changeWithInputState} />
+            books =
+                < BookList
+                    books={this.state.books}
+                    deleteBook={this.deleteBook}
+                    changeWithInputState={this.changeWithInputState}
+                />
         }
 
         return (
