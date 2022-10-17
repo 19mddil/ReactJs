@@ -5,14 +5,9 @@ class Book extends Component {
         super(props);
         console.log("Book Constructor");
     }
-    UNSAFE_componentWillMount() {
-        console.log("Book WillMount");
-    }
+
     componentDidMount() {
         console.log("Book componentDidMount");
-    }
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        console.log("U Book componentWillReceiveProps", nextProps);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -20,9 +15,16 @@ class Book extends Component {
         return true;
     }
 
-    UNSAFE_componentWillUpdate(nextProps, nextState) {
-        console.log("U Book componentWillUpdate");
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log("BookList getDerivedStateFromProps", nextProps, prevState);
+        return prevState;
     }
+
+    getSnapshotBeforeUpdate() {
+        console.log("U BookList getSnapshotBeforeUpdate");
+        return null;
+    }
+
     render() {
         console.log("Book render");
         return (

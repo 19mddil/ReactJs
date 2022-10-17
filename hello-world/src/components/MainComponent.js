@@ -45,24 +45,30 @@ class MainComponent extends Component {
             }
         )
     }
+
     componentDidMount() {
         console.log("MainComponent componentDidMount");
     }
-    UNSAFE_componentWillMount() {
-        console.log("MainComponent WillMount");
-    }
-
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log("U MainComponent shouldComponentUpdate", nextProps, nextState);
         return true;
     }
-    UNSAFE_componentWillUpdate(nextProps, nextState) {
-        console.log("U MainComponent componentWillUpdate");
-    }
+
     componentDidUpdate() {
         console.log("U MainComponent componentDidupdate");
     }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log("MainComponent getDerivedStateFromProps", nextProps, prevState);
+        return prevState;
+    }
+
+    getSnapshotBeforeUpdate() {
+        console.log("U MainComponent getSnapshotBeforeUpdate");
+        return null;
+    }
+
     render() {
         console.log("MainComponet render");
         const style = {
