@@ -10,11 +10,8 @@ class MainComponent extends Component {
         super(props);
         this.state = {
             books: bookList,
-            showBooks: true,
         }
     }
-
-
 
     changeWithInputState = (event, index) => {
         const book = {
@@ -38,48 +35,21 @@ class MainComponent extends Component {
         });
     }
 
-    toggleBooks = () => {
-        this.setState(
-            {
-                showBooks: !this.state.showBooks
-            }
-        )
-    }
-
     render() {
-        const style = {
-            border: "1px solid red",
-            borderRadius: "5px",
-            backgroundColor: "Black",
-            color: "grey",
-            //margin: "10px auto",
-            padding: "10px",
-            marginLeft: "30%",
-            marginRight: "30%",
-        };
-
-
-        let books = null;
-        if (this.state.showBooks) {
-            books =
-                < BookList
-                    books={this.state.books}
-                    deleteBook={this.deleteBook}
-                    changeWithInputState={this.changeWithInputState}
-                />
-        }
+        const books = <BookList
+            books={this.state.books}
+            deleteBook={this.deleteBook}
+            changeWithInputState={this.changeWithInputState}
+        />
 
         return (
             <div className="App">
-                <h1 style={style}>BookList</h1>
                 <div className='nav-bar'>
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/new">New Book Entry</a></li>
                     </ul>
                 </div>
-                <br />
-                <button onClick={this.toggleBooks} >Toogle Books</button>
                 <br />
                 {books}
                 <NewBook />
