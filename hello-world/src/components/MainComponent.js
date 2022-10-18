@@ -3,6 +3,8 @@ import '../App.css';
 import bookList from '../assets/books';
 import BookList from './Lists/bookList';
 import NewBook from './representational/NewBook';
+import { Route, Routes, NavLink } from 'react-router-dom';
+import Home from './representational/home';
 
 class MainComponent extends Component {
 
@@ -41,18 +43,24 @@ class MainComponent extends Component {
             deleteBook={this.deleteBook}
             changeWithInputState={this.changeWithInputState}
         />
-
+        let activeStyle = {
+            color: "orange",
+        };
         return (
+
             <div className="App">
-                <div className='nav-bar'>
+                <nav className='nav-bar'>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/new">New Book Entry</a></li>
+                        <li><NavLink end to="/" style={({ isActive }) => isActive ? activeStyle : { color: "black" }}>Home</NavLink></li>
+                        <li><NavLink end to="/new" style={({ isActive }) => isActive ? activeStyle : { color: "black" }}>NewBook</NavLink></li>
                     </ul>
-                </div>
+                </nav>
                 <br />
-                {books}
-                <NewBook />
+                <Routes>
+                    <Route path='/' element={books} />
+                    <Route path='/new' element={<NewBook />} />
+                </Routes>
+
             </div>
         );
     }

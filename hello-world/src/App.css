@@ -14,7 +14,12 @@
   margin: 20px;
 }
 
+
 .nav-bar a {
   text-decoration: none;
   color: black;
+}
+
+.nav-bar a:hover {
+  color: blue;
 }
