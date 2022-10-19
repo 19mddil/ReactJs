@@ -49,7 +49,7 @@ class MainComponent extends Component {
                     <Route path='/books' end element={books} />
                     <Route path='/new' end element={<NewBook />} />
                     <Route path='/:id' end element={<BookDetail book={this.state.selectedBook} />} />
-                    {<Route path="/" element={<Navigate to="/books" />} />}{/*for redirecting purpose */}
+                    <Route path="/" element={<Navigate to="/books" />} />{/*for redirecting purpose */}
                 </Routes>
 
 
