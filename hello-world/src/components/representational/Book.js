@@ -8,10 +8,9 @@ class Book extends Component {
 
     render() {
         return (
-            <div className='Book'>
-                <h3 onClick={this.props.delete}>Book: {this.props.bookName}</h3>
+            <div className='Book' onClick={this.props.selectedBookHandler}>
+                <h3>Book: {this.props.bookName}</h3>
                 <h4>Writer: {this.props.writer}</h4>
-                <input type="text" onChange={this.props.changeWithInputState} value={this.props.bookName} />
             </div>
         );
     };

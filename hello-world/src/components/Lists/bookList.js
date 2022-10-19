@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Book from '../representational/Book';
+import { Link } from "react-router-dom";
 
 class BookList extends Component {
     constructor(props) {
@@ -9,13 +10,13 @@ class BookList extends Component {
     render() {
         return (this.props.books.map((book, index) => {
             return (
-                <Book
-                    key={book.id}
-                    bookName={book.bookName}
-                    writer={book.writer}
-                    delete={this.props.deleteBook.bind(this, index)}
-                    changeWithInputState={event => this.props.changeWithInputState(event, index)}
-                />
+                <Link to={"/" + book.id} key={book.id} style={{ textDecoration: "none", color: "black" }}>
+                    <Book
+                        bookName={book.bookName}
+                        writer={book.writer}
+                        selectedBookHandler={this.props.selectedBookHandler.bind(this, book.id)}
+                    />
+                </Link>
             )
         }))
     }

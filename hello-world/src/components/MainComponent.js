@@ -3,7 +3,8 @@ import '../App.css';
 import bookList from '../assets/books';
 import BookList from './Lists/bookList';
 import NewBook from './representational/NewBook';
-import { Route, Routes, NavLink } from 'react-router-dom';
+import BookDetail from './representational/bookDetail';
+import { Route, Routes, NavLink, Navigate } from 'react-router-dom';
 import Home from './representational/home';
 
 class MainComponent extends Component {
@@ -12,36 +13,23 @@ class MainComponent extends Component {
         super(props);
         this.state = {
             books: bookList,
+            selectedBook: null,
         }
     }
 
-    changeWithInputState = (event, index) => {
-        const book = {
-            ...this.state.books[index]
-        }
-        book.bookName = event.target.value;
-        const books = [...this.state.books];
-        books[index] = book;
-        this.setState({
-            books: books
-        });
-    }
-
-    deleteBook = index => {
-        // const books = this.state.books.slice();
-        // const books = this.state.books.map(item => item);
-        const books = [...this.state.books]
-        books.splice(index, 1);
-        this.setState({
-            books: books,
-        });
+    selectedBookHandler = bookId => {
+        const book = this.state.books.filter(book => book.id === bookId)[0];
+        this.setState(
+            {
+                selectedBook: book
+            }
+        )
     }
 
     render() {
         const books = <BookList
             books={this.state.books}
-            deleteBook={this.deleteBook}
-            changeWithInputState={this.changeWithInputState}
+            selectedBookHandler={this.selectedBookHandler}
         />
         let activeStyle = {
             color: "orange",
@@ -56,10 +44,14 @@ class MainComponent extends Component {
                     </ul>
                 </nav>
                 <br />
+                {/* switch is replaced by routes */}
                 <Routes>
-                    <Route path='/' element={books} />
-                    <Route path='/new' element={<NewBook />} />
+                    <Route path='/books' end element={books} />
+                    <Route path='/new' end element={<NewBook />} />
+                    <Route path='/:id' end element={<BookDetail book={this.state.selectedBook} />} />
+                    {<Route path="/" element={<Navigate to="/books" />} />}{/*for redirecting purpose */}
                 </Routes>
+
 
             </div>
         );
