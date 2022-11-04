@@ -1,0 +1,16 @@
+{
+    "dishes": [
+        {
+            "id": 0,
+            "name": "Burger",
+            "price": "199"
+        },
+        {
+            "id": 1,
+            "name": "Cheese Cake",
+            "price": "250"
+        }
+    ],
+    "comments": [],
+    "feedback": []
+}
