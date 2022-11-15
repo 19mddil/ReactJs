@@ -191,3 +191,25 @@ class Person extends Component {
 }
 export default Person;
 ```
+# Fact: Changing State of a component re renders the Component!
+
+# Inline CSS in JSX
+```js
+//Always write inline jsx in render()
+render() {
+    const style = {
+      color: "grey",
+      backgroundColor: "black",
+      marginLeft: "40%",
+      marginRight: "40%",
+      padding: "5px",
+    }
+    return (
+      <div className="App">
+        <h1 style={style}>BookList</h1>
+      </div>
+    );
+  }
+```
+
+
