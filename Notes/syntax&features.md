@@ -195,7 +195,7 @@ export default Person;
 
 # Inline CSS in JSX
 ```js
-//Always write inline jsx in render()
+//Always write inline css in render()
 render() {
     const style = {
       color: "grey",
