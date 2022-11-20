@@ -3,7 +3,6 @@ const redux = require('redux');
 // console.log(redux);
 
 //State
-
 const initState = {
     num: 0,
 }
@@ -30,8 +29,8 @@ const rootReducer = (state = initState, action) => {
     }
     return state;
 }
-//Store
 
+//Store
 const store = redux.createStore(rootReducer);
 
 console.log(store.getState());
