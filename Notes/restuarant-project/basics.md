@@ -24,4 +24,4 @@ const Navigation = () => (
 export default Navigation;
 ```
 ## Floder hirerchy:
-![Folder Structure](src/img/hirerchy.png)
+![Folder Structure](src/hirerchy.png)
