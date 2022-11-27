@@ -14,7 +14,7 @@ componentWillReceiveProps(nextProps) -> shouldComponentUpdate(nextProps,nextStat
 
 ![component update lifecyle functions](src/img/compnent-update-function-cycle.png)
 
-# In mainComponent update(Demonstration Code)
+# In mainComponent update by Props(Demonstration Code)
 ```js
 class MainComponent extends Component {
 
