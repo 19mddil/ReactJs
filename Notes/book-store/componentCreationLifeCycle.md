@@ -15,3 +15,26 @@
 # Output
 ![lifecycle component creation life cyle output](src/img/creationLifeCycleSteps.png)
 
+# Important
+
+if you setState in willmount then 
+
+componentWillMount -> render -> componentDidMount
+
+but if you setState in didMount then 
+
+componentWillMout -> render -> componentDidMount -> shouldComponentUpdate -> componentWillUpdate -> render -> componetDidUpdate
+
+## Changing state in willmount
+![](src/img/willMountStateSet.png)
+## Changing state in Didmount
+![](src/img/componentDidMountStateChange.png)
+## Looping
+Changing state in DidUpdate causes a Loop
+
+Changing state in ShouldUpdate causes a Loop
+
+Changing state in willUpdate causes a Loop
+
+
+
