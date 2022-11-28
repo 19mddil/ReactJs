@@ -121,3 +121,8 @@ class MainComponent extends Component {
 export default MainComponent;
 ```
 
+## Updated Component lifecycle Methods
+
+`static getDerivedStateFromProps(nextProps,prevState)`, using the function we can change the state with replaced props or more specifically we can update the prev state with updated props using this method.
+
+
