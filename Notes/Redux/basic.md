@@ -1,6 +1,6 @@
 # Basic Workflow
 ## Store
-- Redux has a indepenent central state store known as global space with is accessible to any react component
+- Redux has a indepenent central state store known as global space which is accessible to any react component
 ## Updating store
 When a react component tries to update a store, it can not do it directly so it follows the following steps
 - React component dispatces an action(the kind of changes defined in action like- changing state, deleting state or updating state)
