@@ -2,12 +2,12 @@ const redux = require('redux');
 
 // console.log(redux);
 
-//State
+//State 1
 const initState = {
     num: 0
 }
 
-//Reducer
+//Reducer 4
 const rootReducer = (state = initState, action) => {
     if (action.type == 'ADD_NUM') {
         return {
@@ -24,9 +24,10 @@ const rootReducer = (state = initState, action) => {
     return state;
 }
 
-//Store
+//Store 5 (updating store) 1
 const store = redux.createStore(rootReducer);
 
+//Actions 2
 const actionAddNum = {
     type: 'ADD_NUM',
     value: 10,
@@ -36,6 +37,7 @@ const incrementNum = {
     type: 'INC_NUM',
 }
 
+//Dispatching Actions 3
 store.dispatch(actionAddNum);
 store.dispatch(incrementNum);
 
