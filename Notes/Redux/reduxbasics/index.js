@@ -18,7 +18,13 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'INC_NUM') {
         return {
             ...state,
-            num: state.num + 1
+            num: state.num + 1,
+        }
+    }
+    if (action.type === 'DEC_NUM') {
+        return {
+            ...state,
+            num: state.num - 1,
         }
     }
     return state;
@@ -26,6 +32,9 @@ const rootReducer = (state = initState, action) => {
 
 //Store 5 (updating store) 1
 const store = redux.createStore(rootReducer);
+store.subscribe(() => {
+    console.log("[subscrib] :", store.getState());
+});
 
 //Actions 2
 const actionAddNum = {
@@ -37,10 +46,14 @@ const incrementNum = {
     type: 'INC_NUM',
 }
 
+const decrementNum = {
+    type: 'DEC_NUM',
+}
+
 //Dispatching Actions 3
+
 store.dispatch(actionAddNum);
 store.dispatch(incrementNum);
-
-console.log(store.getState());
+store.dispatch(decrementNum);
 
 //Dispatching Action
